@@ -1,0 +1,7 @@
+# require 'authenticated_system'
+# require 'restful_authentication/authentication'
+# require 'restful_authentication/authentication/by_password'
+# require 'restful_authentication/authentication/by_cookie_token'
+# require 'restful_authentication/authorization/aasm_roles'
+# require 'restful_authentication/authorization/stateful_roles'
+# require 'restful_authentication/trustification/email_validation'

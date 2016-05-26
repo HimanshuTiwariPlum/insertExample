@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NEW BOOK</title>
+</head>
+<body><div align="center">
+	<h1>Adding New Book </h1>
+	<% form_for @book , :html =>{:multipart => true} do |f| %>
+	<label>BOOK TITTLE</label>
+	<%= f.text_field :tittle %>
+	<br>
+	<label>BOOK PRICE</label>
+	<%= f.text_field :price %>
+	<br>
+	<label>SUBJECT</label>
+	<%= collection_select(:book,:subject_id,@subjects,:id,:name) %>
+	<br>
+	<label>DESCRIPTION</label>
+	<%= f.text_area :description , :rows => 5, :cols => 25 %>
+	<br>
+	<label>Image</label>
+	<%= f.file_field :image %>
+	<br>
+	<br>
+
+	<%= f.submit "Create" %>
+	<%= link_to "Add New Subject" , subjects_url  %>
+	<%end%>
+</div>
+</body>
+</html>

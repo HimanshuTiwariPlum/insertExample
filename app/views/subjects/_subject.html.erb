@@ -1,0 +1,7 @@
+<ul id="subject_list"><li id="subject_<%= subject.id %>">
+<%= link_to subject.name, :action => 'show', :id => subject.id %>
+<%= "(#{subject.books.count})"%>
+ <%=link_to_remote "Destroy", :url => subject_url(:id => subject.id), :method => :delete , 
+  :update => "list"%>
+</li>
+</ul>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1><%= @subject.name -%></h1>
+<ul>
+<% @subject.books.each do |c| %>
+<li><%= link_to c.tittle, :controller => "subjects", :action => "show", :id => c.id -%></li>
+<% end %>
+</ul>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Subject_Index</title>
+</head>
+<body>
+<h1>Available Subjects</h1>
+<div id="list" >
+
+<% @subjects.each do |f| %>
+<ul id ="subject_list">
+<li ><%= link_to f.name  ,{:controller =>"subjects" , :action =>"show" , :id => f.id } %>
+
+<%= "(#{f.books.count})"%>
+  <%=link_to_remote "Destroy", :url => subject_url(:id => f.id), :method => :delete , 
+  :update => "list"%>
+</li>
+</ul>
+
+<% end %>
+
+</div>
+
+<p id="add_link"><%= link_to_function("Add a Subject","Element.remove('add_link'); 
+Element.show('add_subject');") %></p>
+<div id="image" style="display:none;"><%=link_to "AJAX" ,{:controller => "books" , :action=>"index"} %></div>
+<div id="add_subject" style="display:none;">
+
+<% form_remote_tag(:url => {:action => 'create'},:update => "list", 
+	:position => :bottom ) do %>
+Name: <%= text_field "subject", "name" , :reload => true %>
+
+<%= submit_tag 'Add' %>
+
+<% end %>
+</div>
+<%= link_to "Home" , books_url%>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<% @subjects.each do |f| %>
+<ul id="subject_list">
+<li ><%= link_to f.name  ,{:controller =>"subjects" , :action =>"show" , :id => f.id } %>
+
+<%= "(#{f.books.count})"%>
+  <%=link_to_remote "Destroy", :url => subject_url(:id => f.id), :method => :delete , 
+  :update => "list"%>
+</li>
+</ul>
+<% end %>

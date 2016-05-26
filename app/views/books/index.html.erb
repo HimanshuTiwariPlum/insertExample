@@ -1,0 +1,20 @@
+
+	<% if @books.blank? %>	
+	<h1>There are not any books currently available in the system. </h1>
+	<% else %>
+	
+	<h1><p>These are the current books in our system</p></h1>
+	<ul id="books">
+		<% @books.each do |c| %>
+		<p><li><%= link_to image_tag(c.image.url(:small)),{:action =>'show', :id => c.id} %>
+		
+		<%= link_to c.tittle, {:action => 'show', :id => c.id} %>
+			<%=link_to 'EDIT' , {:action =>'edit' , :id => c.id}%>
+			<%=link_to 'DELETE' , {:action =>'delete' , :id => c.id }, :confirm => "Are You Sure??"  %></p>
+		</li>
+
+		<% end %>
+		<%= will_paginate @books %>
+	</ul>
+	<% end %>
+	<p><%= link_to "Add new Book", {:action => 'new' }%></p><P><%=link_to "Show Subjects" , subjects_url%></P>

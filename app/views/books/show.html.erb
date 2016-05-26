@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%=@book.tittle%></title>
+</head>
+<body>
+	<p><strong>Image  :</strong> 	<%=image_tag @book.image.url(:small)%></p>
+	<p><strong>Title  :</strong> 	<%=@book.tittle%></p>
+	<p><strong>Price: </strong> $<%= @book.price %><br />
+
+		<strong>Subject: </strong> <%= link_to @book.subject.name,
+		:controller=>"subjects",:action => "show", :id => @book.subject.id %><br />
+		<strong>Created Date:</strong> <%= @book.created_at %><br />
+	</p>
+	<p><strong>Description: </strong><%= @book.description %></p>
+	<hr />
+	<%= link_to 'Back', {:action => 'index'} %>
+	<%= link_to "Edit " ,{:action=> 'edit' , :id => @book.id}%>
+</body>
+</html>

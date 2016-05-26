@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1><%= @subject.name %></h1>
+<ul style="padding: 10px" , id ="book_list">
+<% @subject.books.each do |c| %>
+<li><%= link_to c.tittle, :controller => "books" , :action => "show", :id => c.id %></li>
+<% end %>
+</ul>
+<p id ="book_link">
+<%= link_to_function("Add New Book", "Element.remove('book_link'); Element.show('text_box');")%> </p>
+<br>
+
+
+<div id="text_box" style="display:none">
+<% form_remote_tag(:url =>{:controller => "books" , :action => "add_book"},:update => "book_link", 
+	:position => :bottom ) do %>
+Tittle: <%= text_field  "books" , "tittle"%><br>
+Price: <%= text_field  "books" , "price"%><br>
+Description: <%= text_field  "books" , "description"%><br>
+<%= hidden_field "books" , "subject_id" , :value => @subject.id%>
+<%= submit_tag 'Add' %>
+<%end%>
+</div>
+
+
+<p><%= link_to "Back" , subjects_url%></p>
+
+
+</body>
+</html>
